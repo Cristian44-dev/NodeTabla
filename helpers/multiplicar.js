@@ -1,13 +1,16 @@
 const fs = require("fs");
 const colors=require('colors');
-const tabla = (base = 1 , listar) => {
-  let date = `=============\nTABLA DEL ${colors.yellow(base)}\n=============\n`;
-  for (let i = 1; i <= 10; i++) {
-    date += `${colors.yellow(base)}${colors.blue.bold("x")}${colors.yellow(i)}=${base * i}\n`;
+const tabla = (base = 1 , listar, alcanze) => {
+  
+  let date= `=============\nTABLA DEL ${base}\n=============\n`;
+  muestra=date;
+  for (let i = 1; i <= alcanze; i++) {
+    date += `${base}x${i}=${base * i}\n`;
+    muestra += `${base}${colors.green("x")}${i}${colors.green("=")}${base * i}\n`;
   }
   fs.writeFileSync(`./out/tabla-${base}.txt`, date);
   console.log(`tabla-${base}.txt creada`);
-  listar ? console.log(date) : "";  
+  listar ? console.log(muestra) : "";  
 };
 module.exports = {
   tabla,

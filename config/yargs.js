@@ -11,9 +11,15 @@ const argv=require('yargs')
                 default:false,
                 describe:'Muestra la tabla'
             })
+            .option('a',{
+                alias:"alcanze",
+                type:"number",
+                dafault:10,
+                describe:"Cantidad de veces a multiplicar",
+            })
             .check((argv)=>{
-                if ( isNaN(argv.b)){
-                    throw 'La base tiene que ser un numero'
+                if ( isNaN(argv.b) || isNaN(argv.a)){
+                    throw 'Se requiere un número'
                 }
                 return true
             })
